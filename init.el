@@ -24,7 +24,10 @@
 ;(require 'ciberpunk-theme)
 ;(load-theme 'cyberpunk t)
 
-;; Font size
+;; Custom colors
+(set-background-color "#1C1C1C")
+
+;; Custom font size
 (set-face-attribute 'default nil :height 140)
 
 ;; Show line numbers
