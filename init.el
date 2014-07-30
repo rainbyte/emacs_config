@@ -114,3 +114,8 @@
 ;; Color each identifier
 (require 'rainbow-identifiers)
 (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
+
+;; Remove whitespace before saving
+(add-hook 'prog-mode-hook (lambda ()
+			    (add-to-list 'write-file-functions
+					  'delete-trailing-whitespace)))
