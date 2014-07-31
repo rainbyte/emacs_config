@@ -118,6 +118,9 @@
 (require 'rainbow-identifiers)
 (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
 
+;; Show matching parenthesis
+(add-hook 'prog-mode-hook 'show-paren-mode)
+
 ;; Remove whitespace before saving
 (add-hook 'prog-mode-hook (lambda ()
 			    (add-to-list 'write-file-functions
