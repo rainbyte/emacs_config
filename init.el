@@ -58,9 +58,7 @@
 (defun my:ac-c-header-init()
   (require 'auto-complete-c-headers)
   (add-to-list 'ac-sources 'ac-source-c-headers))
-(add-hook 'c++-mode-hook 'my:ac-c-header-init)
-(add-hook 'c-mode-hook 'my:ac-c-header-init)
-(add-hook 'objc-mode-hook 'my:ac-c-header-init)
+(add-hook 'c-mode-common-hook 'my:ac-c-header-init)
 
 ;; iedit config
 (define-key global-map (kbd "C-,") 'iedit-mode) ; fix keymap bug
@@ -79,9 +77,7 @@
   (add-to-list 'company-backends 'company-irony)
   (define-key company-mode-map [remap hippie-expand]
     'company-complete))
-(add-hook 'c++-mode-hook 'my:company-mode-hook)
-(add-hook 'c-mode-hook 'my:company-mode-hook)
-(add-hook 'objc-mode-hook 'my:company-mode-hook)
+(add-hook 'c-mode-common-hook 'my:company-mode-hook)
 
 ;; Turn on semantic mode and add it to auto-complete
 ;(semantic-mode 1)
