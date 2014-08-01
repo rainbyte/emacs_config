@@ -34,6 +34,9 @@
 (require 'nlinum)
 (global-nlinum-mode 1)
 
+;; Reload files automatically
+(global-auto-revert-mode t)
+
 ;; Start and config auto-complete
 (require 'auto-complete)
 (require 'auto-complete-config)
