@@ -115,6 +115,6 @@
 (add-hook 'prog-mode-hook 'show-paren-mode)
 
 ;; Remove whitespace before saving
-(add-hook 'prog-mode-hook (lambda ()
-			    (add-to-list 'write-file-functions
-					  'delete-trailing-whitespace)))
+(defun my:remove-whitespace-hook()
+  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+(add-hook 'prog-mode-hook 'my:remove-whitespace-hook)
