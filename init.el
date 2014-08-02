@@ -54,7 +54,7 @@
 (setq elpy-default-minor-modes ; disable hightlight
       (remove 'highlight-indentation-mode elpy-default-minor-modes))
 
-;; Add ac-complete-headers to C/C++/ObjC modes
+;; Add header completion for C/C++/ObjC modes
 (defun my:c-header-completion-hook()
   (require 'auto-complete-c-headers)
   (add-to-list 'ac-sources 'ac-source-c-headers))
