@@ -69,7 +69,7 @@
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; Load company-mode + irony-mode for C/C++/ObjC
-(defun my:company-mode-hook()
+(defun my:irony-mode-hook()
   (require 'irony)
   (irony-mode 1)
   (require 'company)
@@ -77,7 +77,7 @@
   (add-to-list 'company-backends 'company-irony)
   (define-key company-mode-map [remap hippie-expand]
     'company-complete))
-(add-hook 'c-mode-common-hook 'my:company-mode-hook)
+(add-hook 'c-mode-common-hook 'my:irony-mode-hook)
 
 ;; Turn on semantic mode and add it to auto-complete
 ;(semantic-mode 1)
