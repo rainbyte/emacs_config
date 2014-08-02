@@ -37,10 +37,9 @@
 ;; Reload files automatically
 (global-auto-revert-mode t)
 
-;; Start and config auto-complete
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
+;; Start company-mode
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Start yasnippet
 (require 'yasnippet)
@@ -56,8 +55,8 @@
 
 ;; Add header completion for C/C++/ObjC modes
 (defun my:c-header-completion-hook()
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers))
+  (require 'company-c-headers)
+  (add-to-list 'company-backends 'company-c-headers))
 (add-hook 'c-mode-common-hook 'my:c-header-completion-hook)
 
 ;; iedit config
@@ -68,12 +67,10 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
-;; Load company-mode + irony-mode for C/C++/ObjC
+;; Load irony-mode as company-mode backend for C/C++/ObjC modes
 (defun my:irony-mode-hook()
   (require 'irony)
   (irony-mode 1)
-  (require 'company)
-  (company-mode 1)
   (add-to-list 'company-backends 'company-irony)
   (define-key company-mode-map [remap hippie-expand]
     'company-complete))
