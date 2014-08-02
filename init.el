@@ -55,10 +55,10 @@
       (remove 'highlight-indentation-mode elpy-default-minor-modes))
 
 ;; Add ac-complete-headers to C/C++/ObjC modes
-(defun my:ac-c-header-init()
+(defun my:c-header-completion-hook()
   (require 'auto-complete-c-headers)
   (add-to-list 'ac-sources 'ac-source-c-headers))
-(add-hook 'c-mode-common-hook 'my:ac-c-header-init)
+(add-hook 'c-mode-common-hook 'my:c-header-completion-hook)
 
 ;; iedit config
 (define-key global-map (kbd "C-,") 'iedit-mode) ; fix keymap bug
