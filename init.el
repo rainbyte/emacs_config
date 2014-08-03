@@ -37,6 +37,9 @@
 ;; Reload files automatically
 (global-auto-revert-mode t)
 
+;; Preserve mini-buffer history
+(savehist-mode 1)
+
 ;; Start company-mode
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
