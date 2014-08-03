@@ -118,7 +118,7 @@
 ;; Smart parenthesis config
 (defun my:parenthesis-config()
   (require 'smartparens-config)
-  (smartparens-global-mode t)
+  (smartparens-global-mode t) ;; smart completion
   (show-smartparens-global-mode t)) ;; highlights matching pairs
 (add-hook 'prog-mode-hook 'my:parenthesis-config)
 
