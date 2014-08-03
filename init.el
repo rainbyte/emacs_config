@@ -55,10 +55,10 @@
       (remove 'highlight-indentation-mode elpy-default-minor-modes))
 
 ;; Add header completion for C/C++/ObjC modes
-(defun my:c-header-completion-hook()
+(defun my:c-header-completion-config()
   (require 'company-c-headers)
   (add-to-list 'company-backends 'company-c-headers))
-(add-hook 'c-mode-common-hook 'my:c-header-completion-hook)
+(add-hook 'c-mode-common-hook 'my:c-header-completion-config)
 
 ;; iedit config
 (define-key global-map (kbd "C-,") 'iedit-mode) ; fix keymap bug
@@ -69,13 +69,13 @@
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; Load irony-mode as company-mode backend for C/C++/ObjC modes
-(defun my:irony-mode-hook()
+(defun my:irony-mode-config()
   (require 'irony)
   (irony-mode 1)
   (add-to-list 'company-backends 'company-irony)
   (define-key company-mode-map [remap hippie-expand]
     'company-complete))
-(add-hook 'c-mode-common-hook 'my:irony-mode-hook)
+(add-hook 'c-mode-common-hook 'my:irony-mode-config)
 
 ;; Turn on semantic mode and add it to auto-complete
 ;(semantic-mode 1)
@@ -98,11 +98,11 @@
 (add-hook 'cider-repl-mode 'paredit-mode)
 
 ;; Custom CIDER config
-(defun my:clojure-mode-hook()
+(defun my:clojure-mode-config()
   (require 'cider)
   (cider-mode 1)
   (define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
-(add-hook 'clojure-mode-hook 'my:clojure-mode-hook)
+(add-hook 'clojure-mode-hook 'my:clojure-mode-config)
 
 ;; Color parenthesis
 (require 'rainbow-delimiters)
@@ -116,6 +116,6 @@
 (add-hook 'prog-mode-hook 'show-paren-mode)
 
 ;; Remove whitespace before saving
-(defun my:remove-whitespace-hook()
+(defun my:remove-whitespace-config()
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
-(add-hook 'prog-mode-hook 'my:remove-whitespace-hook)
+(add-hook 'prog-mode-hook 'my:remove-whitespace-config)
