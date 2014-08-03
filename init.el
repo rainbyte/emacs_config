@@ -126,3 +126,13 @@
 (defun my:remove-whitespace-config()
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 (add-hook 'prog-mode-hook 'my:remove-whitespace-config)
+
+;; Enhanced ruby mode config
+(defun my:ruby-mode-config()
+  (rainbow-identifiers-mode 0) ; fixes wrong colors
+  (require 'robe)
+  (robe-mode 1)
+  (push 'company-robe company-backends)
+  (require 'yard-mode)
+  (yard-mode 1))
+(add-hook 'enh-ruby-mode-hook 'my:ruby-mode-config)
