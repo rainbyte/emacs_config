@@ -112,8 +112,12 @@
 (require 'rainbow-identifiers)
 (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
 
-;; Show matching parenthesis
-(add-hook 'prog-mode-hook 'show-paren-mode)
+;; Smart parenthesis config
+(defun my:parenthesis-config()
+  (require 'smartparens-config)
+  (smartparens-global-mode t)
+  (show-smartparens-global-mode t)) ;; highlights matching pairs
+(add-hook 'prog-mode-hook 'my:parenthesis-config)
 
 ;; Remove whitespace before saving
 (defun my:remove-whitespace-config()
