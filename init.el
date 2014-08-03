@@ -132,5 +132,7 @@
   (rainbow-identifiers-mode 0) ; fixes wrong colors
   (require 'robe)
   (robe-mode 1)
-  (push 'company-robe company-backends))
+  (push 'company-robe company-backends)
+  (require 'yard-mode)
+  (yard-mode 1))
 (add-hook 'enh-ruby-mode-hook 'my:ruby-mode-config)
