@@ -51,8 +51,11 @@
 (elpy-enable)
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand) ; fix keymap bug
 (define-key global-map (kbd "C-c o") 'iedit-mode) ; fix keymap bug
-(setq elpy-default-minor-modes ; disable hightlight
-      (remove 'highlight-indentation-mode elpy-default-minor-modes))
+
+;; Disable elpy highlight
+(defun my:elpy-mode-config()
+  (highlight-indentation-mode 0))
+(add-hook 'elpy-mode-hook 'my:elpy-mode-config)
 
 ;; Add header completion for C/C++/ObjC modes
 (defun my:c-header-completion-config()
