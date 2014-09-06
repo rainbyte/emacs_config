@@ -152,3 +152,13 @@
 (setq whitespace-line-column 80)
 (setq whitespace-style '(face lines-tail))
 (add-hook 'prog-mode-hook 'whitespace-mode)
+
+;; Racket support
+(add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
+(add-to-list 'magic-mode-alist '("#lang racket" . racket-mode))
+(defun my:racket-mode-config()
+  (require 'geiser)
+  (setq geiser-mode-start-repl-p t) ; auto-start repl
+  (push 'geiser-company-backend company-backends)
+  (geiser-mode t))
+(add-hook 'racket-mode-hook 'my:racket-mode-config)
