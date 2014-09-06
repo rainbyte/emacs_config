@@ -40,6 +40,19 @@
 ;; Preserve mini-buffer history
 (savehist-mode 1)
 
+;; Indentation setup
+(setq-default indent-tabs-mode nil) ; use spaces only, never tab
+(setq-default tab-width 4) ; 4 spaces
+
+;; Make tab indent first, and then complete
+(setq-default tab-always-indent 'complete)
+
+;; Text-mode tabs indentation
+(defun my:text-mode-config()
+  ;; Tabs width workaround
+  (setq indent-line-function 'insert-tab))
+(add-hook 'text-mode-hook 'my:text-mode-config)
+
 ;; Start company-mode
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
