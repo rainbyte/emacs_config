@@ -140,3 +140,9 @@
   (require 'yard-mode)
   (yard-mode 1))
 (add-hook 'enh-ruby-mode-hook 'my:ruby-mode-config)
+
+;; CSV mode config
+(require 'csv-mode)
+(defun my:csv-mode-config()
+  (setq csv-separators '(";")))
+(add-hook 'csv-mode-hook 'my:csv-mode-config)
