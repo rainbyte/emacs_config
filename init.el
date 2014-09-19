@@ -146,3 +146,9 @@
 (defun my:csv-mode-config()
   (setq csv-separators '(";")))
 (add-hook 'csv-mode-hook 'my:csv-mode-config)
+
+;; Highlight lines with 80+ characters
+(require 'whitespace)
+(setq whitespace-line-column 80)
+(setq whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook 'whitespace-mode)
