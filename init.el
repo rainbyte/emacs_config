@@ -34,6 +34,9 @@
 (require 'nlinum)
 (global-nlinum-mode 1)
 
+;; Show column number
+(setq column-number-mode t)
+
 ;; Reload files automatically
 (global-auto-revert-mode t)
 
