@@ -175,3 +175,14 @@
   (push 'geiser-company-backend company-backends)
   (geiser-mode t))
 (add-hook 'racket-mode-hook 'my:racket-mode-config)
+
+;; Vala config
+(add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
+(add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
+(add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
+(add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
+(defun my:vala-mode-config()
+  (require 'vala-mode)
+  (setq c-basic-offset 4)
+  (c-set-style "java"))
+(add-hook 'vala-mode-hook 'my:vala-mode-config)
