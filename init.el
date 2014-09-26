@@ -157,10 +157,9 @@
 (add-hook 'csv-mode-hook 'my:csv-mode-config)
 
 ;; Highlight lines with 80+ characters
-(require 'whitespace)
-(setq whitespace-line-column 80)
-(setq whitespace-style '(face lines-tail))
-(add-hook 'prog-mode-hook 'whitespace-mode)
+(require 'column-enforce-mode)
+(set-face-attribute 'column-enforce-face nil :foreground "#ff0000")
+(add-hook 'prog-mode-hook 'column-enforce-mode)
 
 ;; Racket support
 (add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
