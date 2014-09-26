@@ -112,10 +112,6 @@
 (add-hook 'cider-repl-mode 'subword-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
-;; Paredit mode for Clojure
-(add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'cider-repl-mode 'paredit-mode)
-
 ;; Custom CIDER config
 (defun my:clojure-mode-config()
   (require 'cider)
