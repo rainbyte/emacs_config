@@ -1,3 +1,6 @@
+;; Utilitary functions
+(load "~/.emacs.d/utils.el")
+
 ;; Package manager preconfig
 (require 'package)
 (add-to-list 'package-archives
@@ -19,6 +22,7 @@
 (global-set-key [C-tab] 'hippie-expand) ; autocomplete
 
 ;; Color themes
+(my:package-install? 'monokai-theme)
 (require 'monokai-theme)
 (load-theme 'monokai t)
 ;(require 'ciberpunk-theme)
@@ -31,6 +35,7 @@
 (set-face-attribute 'default nil :height 140)
 
 ;; Show line numbers
+(my:package-install? 'nlinum)
 (require 'nlinum)
 (global-nlinum-mode 1)
 
@@ -57,15 +62,18 @@
 (add-hook 'text-mode-hook 'my:text-mode-config)
 
 ;; Start company-mode
+(my:package-install? 'company)
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; Start yasnippet
+(my:package-install? 'yasnippet)
 (require 'yasnippet)
 (yas-reload-all)
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 
 ;; elpy config
+(my:package-install? 'elpy)
 (require 'elpy)
 (elpy-enable)
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand) ; fix keymap bug
@@ -77,8 +85,9 @@
 (add-hook 'elpy-mode-hook 'my:elpy-mode-config)
 
 ;; Add header completion for C/C++/ObjC modes
+(my:package-install? 'company-c-headers)
+(require 'company-c-headers)
 (defun my:c-header-completion-config()
-  (require 'company-c-headers)
   (add-to-list 'company-backends 'company-c-headers))
 (add-hook 'c-mode-common-hook 'my:c-header-completion-config)
 
@@ -86,13 +95,15 @@
 (define-key global-map (kbd "C-,") 'iedit-mode) ; fix keymap bug
 
 ;; Start google-c-style
+(my:package-install? 'google-c-style)
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; Load irony-mode as company-mode backend for C/C++/ObjC modes
+(my:package-install? 'irony)
+(require 'irony)
 (defun my:irony-mode-config()
-  (require 'irony)
   (irony-mode 1)
   (add-to-list 'company-backends 'company-irony)
   (define-key company-mode-map [remap hippie-expand]
@@ -106,6 +117,8 @@
 ;(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
 
 ;; Clojure CIDER and nREPL config
+(my:package-install? 'clojure-mode)
+(require 'clojure-mode)
 (add-hook 'clojure-mode-hook 'cider-turn-on-eldoc-mode)
 (setq nrepl-hide-special-buffers t)
 (setq cider-repl-wrap-history t)
@@ -116,23 +129,27 @@
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 ;; Custom CIDER config
+(my:package-install? 'cider)
+(require 'cider)
 (defun my:clojure-mode-config()
-  (require 'cider)
   (cider-mode 1)
   (define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
 (add-hook 'clojure-mode-hook 'my:clojure-mode-config)
 
 ;; Color parenthesis
+(my:package-install? 'rainbow-delimiters)
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; Color each identifier
+(my:package-install? 'rainbow-identifiers)
 (require 'rainbow-identifiers)
 (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
 
 ;; Smart parenthesis config
+(my:package-install? 'smartparens)
+(require 'smartparens)
 (defun my:parenthesis-config()
-  (require 'smartparens)
   (require 'smartparens-config)
   (smartparens-global-mode t) ;; smart completion
   (show-smartparens-global-mode t)) ;; highlights matching pairs
@@ -144,43 +161,51 @@
 (add-hook 'prog-mode-hook 'my:remove-whitespace-config)
 
 ;; Enhanced ruby mode config
+(my:package-install? 'enh-ruby-mode)
+(require 'enh-ruby-mode)
+(my:package-install? 'robe)
+(require 'robe)
+(my:package-install? 'yard-mode)
+(require 'yard-mode)
 (defun my:ruby-mode-config()
   (rainbow-identifiers-mode 0) ; fixes wrong colors
-  (require 'robe)
   (robe-mode 1)
   (push 'company-robe company-backends)
-  (require 'yard-mode)
   (yard-mode 1))
 (add-hook 'enh-ruby-mode-hook 'my:ruby-mode-config)
 
 ;; CSV mode config
+(my:package-install? 'csv-mode)
 (require 'csv-mode)
 (defun my:csv-mode-config()
   (setq csv-separators '(";")))
 (add-hook 'csv-mode-hook 'my:csv-mode-config)
 
 ;; Highlight lines with 80+ characters
+(my:package-install? 'column-enforce-mode)
 (require 'column-enforce-mode)
 (set-face-attribute 'column-enforce-face nil :foreground "#ff0000")
 (add-hook 'prog-mode-hook 'column-enforce-mode)
 
 ;; Racket support
+(my:package-install? 'geiser)
+(require 'geiser)
 (add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
 (add-to-list 'magic-mode-alist '("#lang racket" . racket-mode))
 (defun my:racket-mode-config()
-  (require 'geiser)
   (setq geiser-mode-start-repl-p t) ; auto-start repl
   (push 'geiser-company-backend company-backends)
   (geiser-mode t))
 (add-hook 'racket-mode-hook 'my:racket-mode-config)
 
 ;; Vala config
+(my:package-install? 'vala-mode)
+(require 'vala-mode)
 (add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
 (add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
 (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
 (add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
 (defun my:vala-mode-config()
-  (require 'vala-mode)
   (setq c-basic-offset 4)
   (c-set-style "java"))
 (add-hook 'vala-mode-hook 'my:vala-mode-config)
