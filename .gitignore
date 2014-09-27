@@ -1,0 +1,31 @@
+# Created by https://www.gitignore.io
+
+### Emacs ###
+# -*- mode: gitignore; -*-
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# elpa packages
+/elpa/
+
+# irony-mode
+/irony/
+
+# other
+/history
+/package-list.txt
+/session.*
+/abbrev_defs
+/image-dired/
+/semanticdb/
+
