@@ -12,6 +12,8 @@
 (package-initialize)
 
 ;; Custom keybindings (C = ctrl || s = super)
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key [C-kp-add] 'text-scale-increase)
 (global-set-key [C-kp-subtract] 'text-scale-decrease)
 (global-set-key (kbd "s-g") 'save-buffer) ; save
