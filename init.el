@@ -22,6 +22,7 @@
 (global-set-key (kbd "s-c") 'clipboard-kill-ring-save) ; copy
 (global-set-key (kbd "s-v") 'clipboard-yank) ; paste
 (global-set-key [C-tab] 'hippie-expand) ; autocomplete
+(define-key global-map (kbd "C-,") 'iedit-mode) ; iedit, fix keymap bug
 
 ;; Color themes
 (my:package-install? 'monokai-theme)
@@ -92,9 +93,6 @@
 (defun my:c-header-completion-config()
   (add-to-list 'company-backends 'company-c-headers))
 (add-hook 'c-mode-common-hook 'my:c-header-completion-config)
-
-;; iedit config
-(define-key global-map (kbd "C-,") 'iedit-mode) ; fix keymap bug
 
 ;; Start google-c-style
 (my:package-install? 'google-c-style)
