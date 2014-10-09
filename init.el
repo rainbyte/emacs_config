@@ -75,6 +75,12 @@
 (yas-reload-all)
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 
+;; Highlight lines with 80+ characters
+(my:package-install? 'column-enforce-mode)
+(require 'column-enforce-mode)
+(set-face-attribute 'column-enforce-face nil :foreground "#ff0000")
+(add-hook 'prog-mode-hook 'column-enforce-mode)
+
 ;; elpy config
 (my:package-install? 'elpy)
 (require 'elpy)
@@ -84,7 +90,8 @@
 
 ;; Disable elpy highlight
 (defun my:elpy-mode-config()
-  (highlight-indentation-mode 0))
+  (highlight-indentation-mode 0)
+  (column-enforce-n 79))
 (add-hook 'elpy-mode-hook 'my:elpy-mode-config)
 
 ;; Add header completion for C/C++/ObjC modes
@@ -180,12 +187,6 @@
 (defun my:csv-mode-config()
   (setq csv-separators '(";")))
 (add-hook 'csv-mode-hook 'my:csv-mode-config)
-
-;; Highlight lines with 80+ characters
-(my:package-install? 'column-enforce-mode)
-(require 'column-enforce-mode)
-(set-face-attribute 'column-enforce-face nil :foreground "#ff0000")
-(add-hook 'prog-mode-hook 'column-enforce-mode)
 
 ;; Racket support
 (my:package-install? 'geiser)
