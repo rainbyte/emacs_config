@@ -85,6 +85,7 @@
 (my:package-install? 'elpy)
 (require 'elpy)
 (elpy-enable)
+(setq elpy-rpc-backend "jedi")
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand) ; fix keymap bug
 (define-key global-map (kbd "C-c o") 'iedit-mode) ; fix keymap bug
 
