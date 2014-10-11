@@ -100,7 +100,9 @@
 (require 'company-c-headers)
 (defun my:c-header-completion-config()
   (add-to-list 'company-backends 'company-c-headers))
-(add-hook 'c-mode-common-hook 'my:c-header-completion-config)
+(add-hook 'c-mode-hook 'my:c-header-completion-config)
+(add-hook 'objc-mode-hook 'my:c-header-completion-config)
+(add-hook 'c++-mode-hook 'my:c-header-completion-config)
 
 ;; Start google-c-style
 (my:package-install? 'google-c-style)
@@ -116,7 +118,9 @@
   (add-to-list 'company-backends 'company-irony)
   (define-key company-mode-map [remap hippie-expand]
     'company-complete))
-(add-hook 'c-mode-common-hook 'my:irony-mode-config)
+(add-hook 'c-mode-hook 'my:irony-mode-config)
+(add-hook 'objc-mode-hook 'my:irony-mode-config)
+(add-hook 'c++-mode-hook 'my:irony-mode-config)
 
 ;; Turn on semantic mode and add it to auto-complete
 ;(semantic-mode 1)
