@@ -105,10 +105,10 @@
 (add-hook 'c++-mode-hook 'my:c-header-completion-config)
 
 ;; Start google-c-style
-(my:package-install? 'google-c-style)
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+;(my:package-install? 'google-c-style)
+;(require 'google-c-style)
+;(add-hook 'c-mode-common-hook 'google-set-c-style)
+;(add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; Load irony-mode as company-mode backend for C/C++/ObjC modes
 (my:package-install? 'irony)
