@@ -215,3 +215,7 @@
   (setq c-basic-offset 4)
   (c-set-style "java"))
 (add-hook 'vala-mode-hook 'my:vala-mode-config)
+
+;; CMake support
+(my:package-install? 'cmake-mode)
+(require 'cmake-mode)
