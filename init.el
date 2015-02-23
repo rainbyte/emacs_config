@@ -11,7 +11,8 @@
 ;; Select stable package versions (before package-init!)
 (setq package-pinned-packages '((clojure-mode . "melpa-stable")
                                 (cider . "melpa-stable")
-                                (elpy . "melpa-stable")))
+                                (elpy . "melpa-stable")
+                                (geiser . "melpa-stable")))
 
 ;; Package manager init
 (package-initialize)
