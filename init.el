@@ -5,8 +5,13 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;(add-to-list 'package-archives
-;             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+
+;; Select stable package versions (before package-init!)
+(setq package-pinned-packages '((clojure-mode . "melpa-stable")
+                                (cider . "melpa-stable")
+                                (elpy . "melpa-stable")))
 
 ;; Package manager init
 (package-initialize)
