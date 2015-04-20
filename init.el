@@ -119,6 +119,8 @@
 ;; Load irony-mode as company-mode backend for C/C++/ObjC modes
 (my:package-install? 'irony)
 (require 'irony)
+(my:package-install? 'company-irony)
+(require 'company-irony)
 (defun my:irony-mode-config()
   (irony-mode 1)
   (add-to-list 'company-backends 'company-irony)
