@@ -243,3 +243,7 @@
 (my:package-install? 'company-ghc)
 (require 'company-ghc)
 (add-to-list 'company-backends 'company-ghc)
+
+;; PKGBUILD mode
+(my:package-install? 'pkgbuild-mode)
+(require 'pkgbuild-mode)
