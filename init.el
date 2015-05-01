@@ -43,6 +43,11 @@
 ;; Custom font size
 (set-face-attribute 'default nil :height 140)
 
+;; Vim-like powerline
+(my:package-install? 'powerline)
+(require 'powerline)
+(powerline-default-theme)
+
 ;; Show line numbers
 (my:package-install? 'nlinum)
 (require 'nlinum)
