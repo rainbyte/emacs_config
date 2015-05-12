@@ -12,7 +12,8 @@
 (setq package-pinned-packages '((clojure-mode . "melpa-stable")
                                 (cider . "melpa-stable")
                                 (elpy . "melpa-stable")
-                                (geiser . "melpa-stable")))
+                                (geiser . "melpa-stable")
+                                (lispy . "melpa-stable")))
 
 ;; Package manager init
 (package-initialize)
@@ -253,3 +254,11 @@
 ;; PKGBUILD mode
 (my:package-install? 'pkgbuild-mode)
 (require 'pkgbuild-mode)
+
+;; vi-like paredit
+(my:package-install? 'lispy)
+(require 'lispy)
+(defun my:lispy-mode-config ()
+  (lispy-mode t))
+(add-hook 'emacs-lisp-mode-hook 'my:lispy-mode-config)
+(add-hook 'lisp-mode-hook 'my:lispy-mode-config)
