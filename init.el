@@ -15,7 +15,7 @@
                                 (geiser . "melpa-stable")
                                 (slime . "melpa-stable")
                                 (slime-company . "melpa-stable")
-                                (lispy . "melpa-stable")))
+                                (lispy . "melpa")))
 
 ;; Package manager init
 (package-initialize)
