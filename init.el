@@ -13,6 +13,8 @@
                                 (cider . "melpa-stable")
                                 (elpy . "melpa-stable")
                                 (geiser . "melpa-stable")
+                                (slime . "melpa-stable")
+                                (slime-company . "melpa-stable")
                                 (lispy . "melpa-stable")))
 
 ;; Package manager init
@@ -254,6 +256,16 @@
 ;; PKGBUILD mode
 (my:package-install? 'pkgbuild-mode)
 (require 'pkgbuild-mode)
+
+;; Superior Lisp Interaction Mode for Emacs
+(my:package-install? 'slime)
+(require 'slime)
+(my:package-install? 'slime-company)
+(require 'slime-company)
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
+(add-to-list 'slime-contribs 'slime-fancy)
+(add-to-list 'slime-contribs 'inferior-slime)
 
 ;; vi-like paredit
 (my:package-install? 'lispy)
