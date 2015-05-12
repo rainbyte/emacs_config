@@ -4,9 +4,9 @@
 ;; Package manager preconfig
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 ;; Select stable package versions (before package-init!)
 (setq package-pinned-packages '((clojure-mode . "melpa-stable")
