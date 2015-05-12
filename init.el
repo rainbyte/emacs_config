@@ -262,10 +262,12 @@
 (require 'slime)
 (my:package-install? 'slime-company)
 (require 'slime-company)
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
-(setq inferior-lisp-program "sbcl")
-(add-to-list 'slime-contribs 'slime-fancy)
-(add-to-list 'slime-contribs 'inferior-slime)
+(defun my:slime-mode-config ()
+  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  (setq inferior-lisp-program "sbcl")
+  (add-to-list 'slime-contribs 'slime-fancy)
+  (add-to-list 'slime-contribs 'inferior-slime))
+(add-hook 'slime-mode-hook 'my:slime-mode-config)
 
 ;; vi-like paredit
 (my:package-install? 'lispy)
