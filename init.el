@@ -210,16 +210,14 @@
   (setq csv-separators '(";")))
 (add-hook 'csv-mode-hook 'my:csv-mode-config)
 
-;; Racket support
+;; Racket and Scheme interaction mode
 (my:package-install? 'geiser)
 (require 'geiser)
-(add-to-list 'auto-mode-alist '("\\.rkt\\'" . racket-mode))
-(add-to-list 'magic-mode-alist '("#lang racket" . racket-mode))
-(defun my:racket-mode-config()
+(defun my:geiser-mode-config()
   (setq geiser-mode-start-repl-p t) ; auto-start repl
   (push 'geiser-company-backend company-backends)
   (geiser-mode t))
-(add-hook 'racket-mode-hook 'my:racket-mode-config)
+(add-hook 'scheme-mode-hook 'my:geiser-mode-config)
 
 ;; Vala config
 (my:package-install? 'vala-mode)
