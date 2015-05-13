@@ -145,30 +145,28 @@
 ;  (add-to-list 'ac-source 'ac-source-semantic))
 ;(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
 
-;; Clojure CIDER and nREPL config
+;; Clojure mode config
 (my:package-install? 'clojure-mode)
 (require 'clojure-mode)
-(add-hook 'clojure-mode-hook 'cider-turn-on-eldoc-mode)
-(setq nrepl-hide-special-buffers t)
-(setq cider-repl-wrap-history t)
-(setq cider-repl-history-size 1000)
-(setq cider-repl-tab-command 'indent-for-tab-command)
-(setq cider-prefer-local-resources t)
-(add-hook 'cider-repl-mode 'subword-mode)
-(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
-
-;; Custom CIDER config
 (my:package-install? 'cider)
 (require 'cider)
-(defun my:clojure-mode-config()
-  (cider-mode 1)
-  (define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
-(add-hook 'clojure-mode-hook 'my:clojure-mode-config)
+(add-hook 'clojure-mode-hook 'cider-mode)
+(add-hook 'cider-mode-hook 'eldoc-mode) ; documentation inside minibuffer
+
+;;; Clojure repl config
+(defun my:cider-repl-mode-config ()
+  (setq nrepl-hide-special-buffers t)
+  (setq nrepl-log-messages t)
+  (setq cider-repl-wrap-history t)
+  (setq cider-repl-history-size 1000))
+(add-hook 'cider-repl-mode-hook 'my:cider-repl-mode-config)
+(add-hook 'cider-repl-mode-hook 'subword-mode)
 
 ;; Color parenthesis
 (my:package-install? 'rainbow-delimiters)
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 ;; Color each identifier
 (my:package-install? 'rainbow-identifiers)
