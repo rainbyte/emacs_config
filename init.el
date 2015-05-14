@@ -270,5 +270,7 @@
 (require 'lispy)
 (defun my:lispy-mode-config ()
   (lispy-mode t))
+(add-hook 'clojure-mode-hook 'my:lispy-mode-config)
 (add-hook 'emacs-lisp-mode-hook 'my:lispy-mode-config)
 (add-hook 'lisp-mode-hook 'my:lispy-mode-config)
+(add-hook 'scheme-mode-hook 'my:lispy-mode-config)
