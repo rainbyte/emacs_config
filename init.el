@@ -138,6 +138,7 @@
 
 ;; Disable elpy highlight
 (defun my:elpy-mode-config()
+  (elpy-use-ipython)
   (highlight-indentation-mode 0)
   (column-enforce-n 79))
 (add-hook 'elpy-mode-hook 'my:elpy-mode-config)
