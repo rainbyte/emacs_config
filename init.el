@@ -79,6 +79,11 @@
   (setq indent-line-function 'insert-tab))
 (add-hook 'text-mode-hook 'my:text-mode-config)
 
+;; On the fly syntax checking
+(my:package-install? 'flycheck)
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; Start company-mode
 (my:package-install? 'company)
 (require 'company)
