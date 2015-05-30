@@ -279,3 +279,7 @@
 (add-hook 'emacs-lisp-mode-hook 'my:lispy-mode-config)
 (add-hook 'lisp-mode-hook 'my:lispy-mode-config)
 (add-hook 'scheme-mode-hook 'my:lispy-mode-config)
+
+;; markdown support
+(my:package-install? 'markdown-mode)
+(require 'markdown-mode)
