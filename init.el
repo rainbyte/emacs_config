@@ -267,6 +267,8 @@
 ;; Vala config
 (my:package-install? 'vala-mode)
 (require 'vala-mode)
+(my:package-install? 'vala-snippets)
+(require 'vala-snippets)
 (add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
 (add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
 (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
