@@ -84,6 +84,11 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; Show documentation inside company popup
+(my:package-install? 'company-quickhelp)
+(require 'company-quickhelp)
+(add-hook 'company-mode-hook 'company-quickhelp-mode)
+
 ;; Start yasnippet
 (my:package-install? 'yasnippet)
 (require 'yasnippet)
