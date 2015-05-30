@@ -271,6 +271,7 @@
 (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
 (add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
 (defun my:vala-mode-config()
+  (run-hooks 'prog-mode-hook)
   (setq c-basic-offset 4)
   (c-set-style "java"))
 (add-hook 'vala-mode-hook 'my:vala-mode-config)
