@@ -47,7 +47,7 @@
 
 
 ;; Custom colors
-(set-background-color "#1C1C1C")
+;(set-background-color "#1C1C1C")
 
 
 ;; Custom font size
