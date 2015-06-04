@@ -342,3 +342,7 @@
 (mapcar (lambda (x)
           (add-to-list 'auto-mode-alist `(,x . web-mode)))
         '("\\.html?"))
+
+
+(provide 'init)
+;;; init.el ends here
