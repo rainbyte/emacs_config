@@ -13,7 +13,7 @@
 ;; Select stable package versions (before package-init!)
 (setq package-pinned-packages '((clojure-mode . "melpa-stable")
                                 (cider . "melpa-stable")
-                                (elpy . "melpa-stable")
+                                (elpy . "melpa")
                                 (geiser . "melpa-stable")
                                 (slime . "melpa-stable")
                                 (slime-company . "melpa-stable")
