@@ -97,6 +97,12 @@
 (add-hook 'text-mode-hook 'my:text-mode-config)
 
 
+;; Neotree, filesystem navigation
+(my:package-install? 'neotree)
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
+
 ;; On the fly syntax checking
 (my:package-install? 'flycheck)
 (require 'flycheck)
