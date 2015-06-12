@@ -82,6 +82,8 @@
 ;; Indentation setup
 (setq-default indent-tabs-mode nil) ; use spaces only, never tab
 (setq-default tab-width 4) ; 4 spaces
+(setq-default c-default-style "java")
+(setq-default c-basic-offset 4)
 
 
 ;; Make tab indent first, and then complete
