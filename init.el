@@ -352,5 +352,12 @@
         '("\\.html?"))
 
 
+;; rust support
+(my:package-install? 'rust-mode)
+(require 'rust-mode)
+(my:package-install? 'flycheck-rust)
+(require 'flycheck-rust)
+
+
 (provide 'init)
 ;;; init.el ends here
