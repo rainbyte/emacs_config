@@ -13,7 +13,6 @@
 ;; Select stable package versions (before package-init!)
 (setq package-pinned-packages '((clojure-mode . "melpa-stable")
                                 (cider . "melpa-stable")
-                                (elpy . "melpa")
                                 (geiser . "melpa-stable")
                                 (slime . "melpa-stable")
                                 (slime-company . "melpa-stable")
@@ -135,21 +134,16 @@
 (add-hook 'prog-mode-hook 'column-enforce-mode)
 
 
-;; elpy config
-(my:package-install? 'elpy)
-(require 'elpy)
-(elpy-enable)
-(setq elpy-rpc-backend "jedi")
-(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand) ; fix keymap bug
-(define-key global-map (kbd "C-c o") 'iedit-mode) ; fix keymap bug
-
-
-;; Disable elpy highlight
-(defun my:elpy-mode-config()
-  (elpy-use-ipython)
-  (highlight-indentation-mode 0)
-  (column-enforce-n 79))
-(add-hook 'elpy-mode-hook 'my:elpy-mode-config)
+;; Python support
+(my:package-install? 'anaconda-mode)
+(require 'anaconda-mode)
+(my:package-install? 'company-anaconda)
+(require 'company-anaconda)
+(defun my:python-mode-config ()
+  (add-to-list 'company-backends 'company-anaconda))
+(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'python-mode-hook 'eldoc-mode)
+(add-hook 'python-mode-hook 'my:python-mode-config)
 
 
 ;; Add header completion for C/C++/ObjC modes
