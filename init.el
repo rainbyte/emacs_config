@@ -60,6 +60,12 @@
   (powerline-default-theme))
 
 
+;; Automatic resizing
+(my:package-install? 'golden-ratio)
+(require 'golden-ratio)
+(golden-ratio-mode t)
+
+
 ;; Show line numbers
 (my:package-install? 'nlinum)
 (require 'nlinum)
