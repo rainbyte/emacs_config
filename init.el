@@ -172,16 +172,17 @@
 ;; Load irony-mode as company-mode backend for C/C++/ObjC modes
 (my:package-install? 'irony)
 (require 'irony)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+(add-hook 'c++-mode-hook 'irony-mode)
+
 (my:package-install? 'company-irony)
 (require 'company-irony)
 (defun my:irony-mode-config()
-  (irony-mode 1)
   (add-to-list 'company-backends 'company-irony)
   (define-key company-mode-map [remap hippie-expand]
     'company-complete))
-(add-hook 'c-mode-hook 'my:irony-mode-config)
-(add-hook 'objc-mode-hook 'my:irony-mode-config)
-(add-hook 'c++-mode-hook 'my:irony-mode-config)
+(add-hook 'irony-mode-hook 'my:irony-mode-config)
 
 
 ;; Turn on semantic mode and add it to auto-complete
