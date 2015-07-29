@@ -234,9 +234,10 @@
 
 
 ;; Remove whitespace before saving
-(defun my:remove-whitespace-config()
-  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
-(add-hook 'prog-mode-hook 'my:remove-whitespace-config)
+(defun my:remove-whitespace-config ()
+  (unless (derived-mode-p 'markdown-mode)
+    (delete-trailing-whitespace)))
+(add-hook 'before-save-hook 'my:remove-whitespace-config)
 
 
 ;; Enhanced ruby mode config
