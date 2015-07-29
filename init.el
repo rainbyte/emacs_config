@@ -184,6 +184,14 @@
     'company-complete))
 (add-hook 'irony-mode-hook 'my:irony-mode-config)
 
+(my:package-install? 'flycheck-irony)
+(require 'flycheck-irony)
+(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+
+(my:package-install? 'irony-eldoc)
+(require 'irony-eldoc)
+(add-hook 'irony-mode-hook 'irony-eldoc)
+
 
 ;; Turn on semantic mode and add it to auto-complete
 ;(semantic-mode 1)
