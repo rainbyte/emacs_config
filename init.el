@@ -307,6 +307,9 @@
 (my:package-install? 'haskell-mode)
 (require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(require 'haskell-interactive-mode)
+(require 'haskell-process)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 ;; (my:package-install? 'ghc) ; for completion
 ;; (require 'ghc)
 ;; (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
