@@ -95,10 +95,6 @@
 (setq-default c-basic-offset 4)
 
 
-;; Make tab indent first, and then complete
-(setq-default tab-always-indent 'complete)
-
-
 ;; Text-mode tabs indentation
 (defun my:text-mode-config()
   ;; Tabs width workaround
@@ -123,6 +119,20 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-tooltip-align-annotations t)
+
+
+;; Make tab indentation and completion work properly
+(define-key company-mode-map [remap indent-for-tab-command]
+  'company-indent-for-tab-command)
+(setq tab-always-indent 'complete)      ; indent first, and then complete
+(defun company-indent-for-tab-command (&optional arg)
+  (interactive "P")
+  (let* ((functions-saved completion-at-point-functions)
+         (completion-at-point-functions
+          (lambda ()
+            (let ((completion-at-point-functions functions-saved))
+              (company-complete-common)))))
+    (indent-for-tab-command arg)))
 
 
 ;; Show documentation inside company popup
