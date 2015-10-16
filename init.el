@@ -54,10 +54,14 @@
 
 
 ;; Vim-like powerline
-(my:package-install? 'powerline)
+(my:package-install? 'smart-mode-line)
+(require 'smart-mode-line)
+(my:package-install? 'smart-mode-line-powerline-theme)
 (when (display-graphic-p)
-  (require 'powerline)
-  (powerline-default-theme))
+  (require 'smart-mode-line-powerline-theme)
+  (setq sml/theme 'powerline))
+(setq rm-whitelist '(""))
+(sml/setup)
 
 
 ;; Automatic resizing
