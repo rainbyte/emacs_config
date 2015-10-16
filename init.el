@@ -122,6 +122,7 @@
 (my:package-install? 'company)
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+(setq company-tooltip-align-annotations t)
 
 
 ;; Show documentation inside company popup
