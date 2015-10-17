@@ -325,17 +325,6 @@
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-;; (my:package-install? 'ghc) ; for completion
-;; (require 'ghc)
-;; (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
-;;   (setenv "PATH" (concat my-cabal-path ":" (getenv "PATH")))
-;;   (add-to-list 'exec-path my-cabal-path))
-;; (autoload 'ghc-init "ghc" nil t)
-;; (autoload 'ghc-debug "ghc" nil t)
-;; (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
-;; (my:package-install? 'company-ghc)
-;; (require 'company-ghc)
-;; (add-to-list 'company-backends 'company-ghc)
 
 
 ;; PKGBUILD mode
