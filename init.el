@@ -321,10 +321,12 @@
 ;; Haskell support
 (my:package-install? 'haskell-mode)
 (require 'haskell-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(dolist (hook '(turn-on-haskell-doc-mode ; types on minibuffer
+                turn-on-haskell-indent   ; semi-automatic tab
+                interactive-haskell-mode))
+  (add-hook 'haskell-mode-hook hook))
 
 
 ;; PKGBUILD mode
