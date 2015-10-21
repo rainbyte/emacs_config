@@ -114,9 +114,10 @@
 
 
 ;; Neotree, filesystem navigation
-(my:package-install? 'neotree)
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
+(use-package neotree
+  :ensure t
+  :config
+  (global-set-key [f8] 'neotree-toggle))
 
 
 ;; On the fly syntax checking
