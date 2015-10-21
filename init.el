@@ -4,6 +4,7 @@
 
 ;; Package manager preconfig
 (require 'package)
+(setq package-enable-at-startup nil)    ; disable package auto-load
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
@@ -21,6 +22,13 @@
 
 ;; Package manager init
 (package-initialize)
+
+
+;; Bootstrap use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
 
 
 ;; Custom keybindings (C = ctrl || s = super)
