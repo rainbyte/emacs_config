@@ -60,14 +60,16 @@
 
 
 ;; Vim-like powerline
-(my:package-install? 'smart-mode-line)
-(require 'smart-mode-line)
-(my:package-install? 'smart-mode-line-powerline-theme)
-(when (display-graphic-p)
-  (require 'smart-mode-line-powerline-theme)
-  (setq sml/theme 'powerline))
-(setq rm-whitelist '(""))
-(sml/setup)
+(use-package smart-mode-line
+  :ensure t
+  :config
+  (use-package smart-mode-line-powerline-theme
+    :ensure t
+    :if window-system                   ; enable only in gui mode
+    :config
+    (setq sml/theme 'powerline))
+  (setq rm-whitelist '(""))
+  (sml/setup))
 
 
 ;; Automatic resizing
