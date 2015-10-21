@@ -121,9 +121,12 @@
 
 
 ;; On the fly syntax checking
-(my:package-install? 'flycheck)
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(use-package flycheck
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook 'flycheck-mode)
+  (add-hook 'text-mode-hook 'flycheck-mode))
 
 
 ;; Start company-mode
