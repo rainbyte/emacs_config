@@ -46,11 +46,9 @@
 
 
 ;; Color themes
-(my:package-install? 'monokai-theme)
-(require 'monokai-theme)
-(load-theme 'monokai t)
-;(require 'ciberpunk-theme)
-;(load-theme 'cyberpunk t)
+(use-package monokai-theme ; ciberpunk-theme
+  :ensure t
+  :init (load-theme 'monokai t))
 
 
 ;; Custom colors
