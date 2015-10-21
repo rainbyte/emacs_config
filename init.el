@@ -81,9 +81,10 @@
 
 
 ;; Show line numbers
-(my:package-install? 'nlinum)
-(require 'nlinum)
-(global-nlinum-mode 1)
+(use-package nlinum
+  :ensure t
+  :config
+  (global-nlinum-mode 1))
 
 
 ;; Show column number
