@@ -340,14 +340,16 @@
 
 
 ;; Haskell support
-(my:package-install? 'haskell-mode)
-(require 'haskell-mode)
-(require 'haskell-interactive-mode)
-(require 'haskell-process)
-(dolist (hook '(turn-on-haskell-doc-mode ; types on minibuffer
-                turn-on-haskell-indent   ; semi-automatic tab
-                interactive-haskell-mode))
-  (add-hook 'haskell-mode-hook hook))
+(use-package haskell-mode
+  :ensure t
+  :defer t
+  :config
+  (require 'haskell-interactive-mode)
+  (require 'haskell-process)
+  (dolist (hook '(turn-on-haskell-doc-mode ; types on minibuffer
+                  turn-on-haskell-indent   ; semi-automatic tab
+                  interactive-haskell-mode))
+    (add-hook 'haskell-mode-hook hook)))
 
 
 ;; PKGBUILD mode
