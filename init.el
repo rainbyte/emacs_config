@@ -1,7 +1,3 @@
-;; Utilitary functions
-(load "~/.emacs.d/utils.el")
-
-
 ;; Package manager preconfig
 (require 'package)
 (setq package-enable-at-startup nil)    ; disable package auto-load
