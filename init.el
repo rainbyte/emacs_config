@@ -197,13 +197,6 @@
     (add-hook a-mode-hook 'my-company-c-headers-hook)))
 
 
-;; Start google-c-style
-;(my:package-install? 'google-c-style)
-;(require 'google-c-style)
-;(add-hook 'c-mode-common-hook 'google-set-c-style)
-;(add-hook 'c-mode-common-hook 'google-make-newline-indent)
-
-
 ;; Load irony-mode as company-mode backend for C/C++/ObjC modes
 (use-package irony
   :ensure t
@@ -228,13 +221,6 @@
     :ensure t
     :config
     (add-hook 'irony-mode-hook 'irony-eldoc)))
-
-
-;; Turn on semantic mode and add it to auto-complete
-;(semantic-mode 1)
-;(defun my:add-semantic-to-autocomplete()
-;  (add-to-list 'ac-source 'ac-source-semantic))
-;(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
 
 
 ;; Clojure mode config
