@@ -186,13 +186,14 @@
 
 
 ;; Add header completion for C/C++/ObjC modes
-(my:package-install? 'company-c-headers)
-(require 'company-c-headers)
-(defun my:c-header-completion-config()
-  (add-to-list 'company-backends 'company-c-headers))
-(add-hook 'c-mode-hook 'my:c-header-completion-config)
-(add-hook 'objc-mode-hook 'my:c-header-completion-config)
-(add-hook 'c++-mode-hook 'my:c-header-completion-config)
+(use-package company-c-headers
+  :ensure t
+  :defer t
+  :init
+  (defun my-company-c-headers-hook ()
+    (add-to-list 'company-backends 'company-c-headers))
+  (dolist (a-mode-hook '(c-mode-hook objc-mode-hook c++-mode-hook))
+    (add-hook a-mode-hook 'my-company-c-headers-hook)))
 
 
 ;; Start google-c-style
