@@ -171,15 +171,17 @@
 
 
 ;; Python support
-(my:package-install? 'anaconda-mode)
-(require 'anaconda-mode)
-(my:package-install? 'company-anaconda)
-(require 'company-anaconda)
-(defun my:python-mode-config ()
-  (add-to-list 'company-backends 'company-anaconda))
-(add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'eldoc-mode)
-(add-hook 'python-mode-hook 'my:python-mode-config)
+(use-package anaconda-mode
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'python-mode-hook 'anaconda-mode)
+  (add-hook 'python-mode-hook 'eldoc-mode)
+  :config
+  (use-package company-anaconda
+    :ensure t
+    :config
+    (add-to-list 'company-backends 'company-anaconda)))
 
 
 ;; Add header completion for C/C++/ObjC modes
