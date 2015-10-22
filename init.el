@@ -354,16 +354,19 @@
 
 
 ;; Superior Lisp Interaction Mode for Emacs
-(my:package-install? 'slime)
-(require 'slime)
-(my:package-install? 'slime-company)
-(require 'slime-company)
-(setq inferior-lisp-program "sbcl")
-(defun my:slime-mode-config ()
-  (load (expand-file-name "~/quicklisp/slime-helper.el"))
-  (add-to-list 'slime-contribs 'slime-fancy)
-  (add-to-list 'slime-contribs 'inferior-slime))
-(add-hook 'slime-mode-hook 'my:slime-mode-config)
+(use-package slime
+  :ensure t
+  :defer t
+  :init
+  (setq inferior-lisp-program "sbcl")
+  :config
+  (use-package slime-company
+    :ensure t)
+  (add-hook 'slime-mode-hook
+            (lambda ()
+              (load (expand-file-name "~/quicklisp/slime-helper.el"))
+              (add-to-list 'slime-contribs 'slime-fancy)
+              (add-to-list 'slime-contribs 'inferior-slime))))
 
 
 ;; vi-like paredit
