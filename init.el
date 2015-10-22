@@ -253,10 +253,12 @@
 
 
 ;; Color parenthesis
-(my:package-install? 'rainbow-delimiters)
-(require 'rainbow-delimiters)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode))
 
 
 ;; Color each identifier
