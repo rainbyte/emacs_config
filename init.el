@@ -262,9 +262,11 @@
 
 
 ;; Color each identifier
-(my:package-install? 'rainbow-identifiers)
-(require 'rainbow-identifiers)
-(add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
+(use-package rainbow-identifiers
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
 
 ;; Smart parenthesis config
