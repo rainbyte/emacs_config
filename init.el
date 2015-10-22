@@ -157,10 +157,11 @@
 
 
 ;; Start yasnippet
-(my:package-install? 'yasnippet)
-(require 'yasnippet)
-(yas-reload-all)
-(add-hook 'prog-mode-hook 'yas-minor-mode)
+(use-package yasnippet
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook 'yas-minor-mode))
 
 
 ;; Highlight lines with 80+ characters
