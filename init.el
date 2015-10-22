@@ -305,13 +305,15 @@
 
 
 ;; Racket and Scheme interaction mode
-(my:package-install? 'geiser)
-(require 'geiser)
-(defun my:geiser-mode-config()
-  (setq geiser-mode-start-repl-p t) ; auto-start repl
-  (push 'geiser-company-backend company-backends)
-  (geiser-mode t))
-(add-hook 'scheme-mode-hook 'my:geiser-mode-config)
+(use-package geiser
+  :ensure t
+  :defer t
+  :init
+  (defun my-geiser-mode-hook ()
+    (setq geiser-mode-start-repl-p t) ; auto-start repl
+    (push 'geiser-company-backend company-backends)
+    (geiser-mode t))
+  (add-hook 'scheme-mode-hook 'my-geiser-mode-hook))
 
 
 ;; Vala config
