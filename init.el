@@ -130,30 +130,30 @@
 
 
 ;; Start company-mode
-(my:package-install? 'company)
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
-(setq company-tooltip-align-annotations t)
+(use-package company
+  :ensure t
+  :init
+  (setq company-tooltip-align-annotations t)
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
 
+  ;; Make tab indentation and completion work properly
+  (define-key company-mode-map [remap indent-for-tab-command]
+    'company-indent-for-tab-command)
+  (setq tab-always-indent 'complete) ; indent first, and then complete
+  (defun company-indent-for-tab-command (&optional arg)
+    (interactive "P")
+    (let* ((functions-saved completion-at-point-functions)
+           (completion-at-point-functions
+            (lambda ()
+              (let ((completion-at-point-functions functions-saved))
+                (company-complete-common)))))
+      (indent-for-tab-command arg)))
 
-;; Make tab indentation and completion work properly
-(define-key company-mode-map [remap indent-for-tab-command]
-  'company-indent-for-tab-command)
-(setq tab-always-indent 'complete)      ; indent first, and then complete
-(defun company-indent-for-tab-command (&optional arg)
-  (interactive "P")
-  (let* ((functions-saved completion-at-point-functions)
-         (completion-at-point-functions
-          (lambda ()
-            (let ((completion-at-point-functions functions-saved))
-              (company-complete-common)))))
-    (indent-for-tab-command arg)))
-
-
-;; Show documentation inside company popup
-(my:package-install? 'company-quickhelp)
-(require 'company-quickhelp)
-(add-hook 'company-mode-hook 'company-quickhelp-mode)
+  (use-package company-quickhelp
+    :ensure t
+    :config
+    (add-hook 'company-mode-hook 'company-quickhelp-mode)))
 
 
 ;; Start yasnippet
