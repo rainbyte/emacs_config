@@ -164,10 +164,11 @@
 
 
 ;; Highlight lines with 80+ characters
-(my:package-install? 'column-enforce-mode)
-(require 'column-enforce-mode)
-(set-face-attribute 'column-enforce-face nil :foreground "#ff0000")
-(add-hook 'prog-mode-hook 'column-enforce-mode)
+(use-package column-enforce-mode
+  :ensure t
+  :config
+  (set-face-attribute 'column-enforce-face nil :foreground "#ff0000")
+  (add-hook 'prog-mode-hook 'column-enforce-mode))
 
 
 ;; Python support
