@@ -283,18 +283,18 @@
 
 
 ;; Enhanced ruby mode config
-(my:package-install? 'enh-ruby-mode)
-(require 'enh-ruby-mode)
-(my:package-install? 'robe)
-(require 'robe)
-(my:package-install? 'yard-mode)
-(require 'yard-mode)
-(defun my:ruby-mode-config()
-  (rainbow-identifiers-mode 0) ; fixes wrong colors
-  (robe-mode 1)
-  (push 'company-robe company-backends)
-  (yard-mode 1))
-(add-hook 'enh-ruby-mode-hook 'my:ruby-mode-config)
+(use-package ruby-mode
+  :mode "\\.rb$"
+  :config
+  (use-package enh-ruby-mode :ensure t)
+  (use-package robe :ensure t)
+  (use-package yard-mode :ensure t)
+  (defun my-ruby-mode-config ()
+    (rainbow-identifiers-mode 0) ; fixes wrong colors
+    (robe-mode 1)
+    (push 'company-robe company-backends)
+    (yard-mode 1))
+  (add-hook 'enh-ruby-mode-hook 'my-ruby-mode-config))
 
 
 ;; CSV mode config
