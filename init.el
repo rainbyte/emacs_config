@@ -381,11 +381,9 @@
 
 
 ;; web templates mode
-(my:package-install? 'web-mode)
-(require 'web-mode)
-(mapcar (lambda (x)
-          (add-to-list 'auto-mode-alist `(,x . web-mode)))
-        '("\\.html?"))
+(use-package web-mode
+  :ensure t
+  :mode "\\.html?")
 
 
 ;; rust support
