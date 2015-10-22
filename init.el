@@ -203,27 +203,29 @@
 
 
 ;; Load irony-mode as company-mode backend for C/C++/ObjC modes
-(my:package-install? 'irony)
-(require 'irony)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-(add-hook 'c++-mode-hook 'irony-mode)
-
-(my:package-install? 'company-irony)
-(require 'company-irony)
-(defun my:irony-mode-config()
-  (add-to-list 'company-backends 'company-irony)
-  (define-key company-mode-map [remap hippie-expand]
-    'company-complete))
-(add-hook 'irony-mode-hook 'my:irony-mode-config)
-
-(my:package-install? 'flycheck-irony)
-(require 'flycheck-irony)
-(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
-
-(my:package-install? 'irony-eldoc)
-(require 'irony-eldoc)
-(add-hook 'irony-mode-hook 'irony-eldoc)
+(use-package irony
+  :ensure t
+  :defer t
+  :init
+  (dolist (a-mode-hook '(c-mode-hook objc-mode-hook c++-mode-hook))
+    (add-hook a-mode-hook 'irony-mode))
+  :config
+  (use-package company-irony
+    :ensure t
+    :config
+    (defun my-company-irony-hook()
+      (add-to-list 'company-backends 'company-irony)
+      (define-key company-mode-map [remap hippie-expand]
+        'company-complete))
+    (add-hook 'irony-mode-hook 'my-company-irony-hook))
+  (use-package flycheck-irony
+    :ensure t
+    :config
+    (add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+  (use-package irony-eldoc
+    :ensure t
+    :config
+    (add-hook 'irony-mode-hook 'irony-eldoc)))
 
 
 ;; Turn on semantic mode and add it to auto-complete
