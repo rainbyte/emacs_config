@@ -234,22 +234,21 @@
 
 
 ;; Clojure mode config
-(my:package-install? 'clojure-mode)
-(require 'clojure-mode)
-(my:package-install? 'cider)
-(require 'cider)
-(add-hook 'clojure-mode-hook 'cider-mode)
-(add-hook 'cider-mode-hook 'eldoc-mode) ; documentation inside minibuffer
-
-
-;;; Clojure repl config
-(defun my:cider-repl-mode-config ()
-  (setq nrepl-hide-special-buffers t)
-  (setq nrepl-log-messages t)
-  (setq cider-repl-wrap-history t)
-  (setq cider-repl-history-size 1000))
-(add-hook 'cider-repl-mode-hook 'my:cider-repl-mode-config)
-(add-hook 'cider-repl-mode-hook 'subword-mode)
+(use-package clojure-mode
+  :ensure t
+  :defer t
+  :config
+  (use-package cider
+    :ensure t)
+  (add-hook 'clojure-mode-hook 'cider-mode)
+  (add-hook 'cider-mode-hook 'eldoc-mode) ; show docs inside minibuffer
+  (defun my-cider-repl-mode-config ()
+    (setq nrepl-hide-special-buffers t)
+    (setq nrepl-log-messages t)
+    (setq cider-repl-wrap-history t)
+    (setq cider-repl-history-size 1000))
+  (add-hook 'cider-repl-mode-hook 'my-cider-repl-mode-config)
+  (add-hook 'cider-repl-mode-hook 'subword-mode))
 
 
 ;; Color parenthesis
