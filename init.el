@@ -370,14 +370,15 @@
 
 
 ;; vi-like paredit
-(my:package-install? 'lispy)
-(require 'lispy)
-(defun my:lispy-mode-config ()
-  (lispy-mode t))
-(add-hook 'clojure-mode-hook 'my:lispy-mode-config)
-(add-hook 'emacs-lisp-mode-hook 'my:lispy-mode-config)
-(add-hook 'lisp-mode-hook 'my:lispy-mode-config)
-(add-hook 'scheme-mode-hook 'my:lispy-mode-config)
+(use-package lispy
+  :ensure t
+  :defer t
+  :init
+  (dolist (a-mode-hook '(clojure-mode-hook
+                         emacs-lisp-mode-hook
+                         lisp-mode-hook
+                         scheme-mode-hook))
+    (add-hook a-mode-hook 'lispy-mode)))
 
 
 ;; markdown support
