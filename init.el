@@ -298,11 +298,11 @@
 
 
 ;; CSV mode config
-(my:package-install? 'csv-mode)
-(require 'csv-mode)
-(defun my:csv-mode-config()
+(use-package csv-mode
+  :ensure t
+  :mode "\\.csv$"
+  :init
   (setq csv-separators '(";")))
-(add-hook 'csv-mode-hook 'my:csv-mode-config)
 
 
 ;; Racket and Scheme interaction mode
