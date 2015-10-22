@@ -270,13 +270,15 @@
 
 
 ;; Smart parenthesis config
-(my:package-install? 'smartparens)
-(require 'smartparens)
-(defun my:parenthesis-config()
-  (require 'smartparens-config)
-  (smartparens-global-mode t) ;; smart completion
-  (show-smartparens-global-mode t)) ;; highlights matching pairs
-(add-hook 'prog-mode-hook 'my:parenthesis-config)
+(use-package smartparens
+  :ensure t
+  :defer t
+  :init
+  (defun my-smartparens-config ()
+    (require 'smartparens-config)
+    (smartparens-global-mode t)       ;; smart completion
+    (show-smartparens-global-mode t)) ;; highlights matching pairs
+  (add-hook 'prog-mode-hook 'my-smartparens-config))
 
 
 ;; Remove whitespace before saving
