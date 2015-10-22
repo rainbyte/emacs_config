@@ -331,8 +331,9 @@
 
 
 ;; CMake support
-(my:package-install? 'cmake-mode)
-(require 'cmake-mode)
+(use-package cmake-mode
+  :ensure t
+  :defer t)
 
 
 ;; Haskell support
@@ -347,8 +348,9 @@
 
 
 ;; PKGBUILD mode
-(my:package-install? 'pkgbuild-mode)
-(require 'pkgbuild-mode)
+(use-package pkgbuild-mode
+  :ensure t
+  :mode "PKGBUILD")
 
 
 ;; Superior Lisp Interaction Mode for Emacs
@@ -376,8 +378,9 @@
 
 
 ;; markdown support
-(my:package-install? 'markdown-mode)
-(require 'markdown-mode)
+(use-package markdown-mode
+  :ensure t
+  :defer t)
 
 
 ;; web templates mode
