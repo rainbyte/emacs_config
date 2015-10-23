@@ -18,6 +18,9 @@ tramp
 # elpa packages
 /elpa/
 
+# anaconda-mode
+/anaconda-mode/
+
 # irony-mode
 /irony/
 
