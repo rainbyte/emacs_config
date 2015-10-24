@@ -1,7 +1,8 @@
-;; Path of custom-set-* config
+;; Independent custom-set-* config
 (setq custom-file "~/.emacs.d/custom.el")
 (unless (file-exists-p custom-file)
   (write-region "" "" custom-file))
+(load custom-file)
 
 
 ;; Package manager preconfig
@@ -414,8 +415,6 @@
     (add-hook 'racer-mode-hook 'eldoc-mode)))
 
 
-;; Use custom-set-* config
-(load custom-file)
 
 
 (provide 'init)
