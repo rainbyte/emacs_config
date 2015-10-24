@@ -1,3 +1,9 @@
+;; Path of custom-set-* config
+(setq custom-file "~/.emacs.d/custom.el")
+(unless (file-exists-p custom-file)
+  (write-region "" "" custom-file))
+
+
 ;; Package manager preconfig
 (require 'package)
 (setq package-enable-at-startup nil)    ; disable package auto-load
@@ -406,6 +412,10 @@
               (expand-file-name "/usr/src/rust/src")))
     (add-hook 'rust-mode-hook 'racer-mode)
     (add-hook 'racer-mode-hook 'eldoc-mode)))
+
+
+;; Use custom-set-* config
+(load custom-file)
 
 
 (provide 'init)

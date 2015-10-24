@@ -11,6 +11,9 @@ auto-save-list
 tramp
 .\#*
 
+# custom-set-* config
+custom.el
+
 # eshell files
 /eshell/history
 /eshell/lastdir
