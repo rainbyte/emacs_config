@@ -346,9 +346,12 @@
   (require 'haskell-interactive-mode)
   (require 'haskell-process)
   (dolist (hook '(turn-on-haskell-doc-mode ; types on minibuffer
-                  turn-on-haskell-indent   ; semi-automatic tab
                   interactive-haskell-mode))
-    (add-hook 'haskell-mode-hook hook)))
+    (add-hook 'haskell-mode-hook hook))
+  (use-package hi2
+    :ensure t
+    :config
+    (add-hook 'haskell-mode-hook 'turn-on-hi2)))
 
 
 ;; PKGBUILD mode
