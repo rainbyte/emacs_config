@@ -397,7 +397,9 @@
 ;; web templates mode
 (use-package web-mode
   :ensure t
-  :mode "\\.html?")
+  :mode "\\.html?"
+  :config
+  (setq web-mode-auto-close-style 2)) ;; Tag auto-close with > and </.
 
 
 ;; rust support
