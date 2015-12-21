@@ -20,7 +20,8 @@
                                 (geiser . "melpa-stable")
                                 (slime . "melpa-stable")
                                 (slime-company . "melpa-stable")
-                                (lispy . "melpa")))
+                                (lispy . "melpa")
+                                (csharp-mode . "melpa-stable")))
 
 
 ;; Package manager init
@@ -419,6 +420,10 @@
     (add-hook 'rust-mode-hook 'racer-mode)
     (add-hook 'racer-mode-hook 'eldoc-mode)))
 
+;; C# support
+(use-package csharp-mode
+  :ensure t
+  :defer t)
 
 
 
