@@ -341,6 +341,7 @@
 ;; Haskell support
 (use-package haskell-mode
   :ensure t
+  :pin melpa-stable
   :defer t
   :config
   (require 'haskell-interactive-mode)
