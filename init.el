@@ -347,11 +347,7 @@
   (require 'haskell-process)
   (dolist (hook '(turn-on-haskell-doc-mode ; types on minibuffer
                   interactive-haskell-mode))
-    (add-hook 'haskell-mode-hook hook))
-  (use-package hi2
-    :ensure t
-    :config
-    (add-hook 'haskell-mode-hook 'turn-on-hi2)))
+    (add-hook 'haskell-mode-hook hook)))
 
 
 ;; PKGBUILD mode
