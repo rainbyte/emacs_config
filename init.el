@@ -90,7 +90,9 @@
   (global-nlinum-mode 1))
 
 
-;; Show column number
+;; Custom UI options
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 (setq column-number-mode t)
 
 
