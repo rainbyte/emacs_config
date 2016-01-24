@@ -94,6 +94,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (column-number-mode t)
+(setq-default indicate-buffer-boundaries 'right)
 
 
 ;; Reload files automatically
