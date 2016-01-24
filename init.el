@@ -93,7 +93,7 @@
 ;; Custom UI options
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(setq column-number-mode t)
+(column-number-mode t)
 
 
 ;; Reload files automatically
