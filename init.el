@@ -349,8 +349,11 @@
   :defer t
   :init
   (dolist (hook '(haskell-doc-mode      ; types on minibuffer
+                  haskell-decl-scan-mode
                   interactive-haskell-mode))
-    (add-hook 'haskell-mode-hook hook)))
+    (add-hook 'haskell-mode-hook hook))
+  :config
+  (speedbar-add-supported-extension ".hs"))
 
 
 ;; PKGBUILD mode
