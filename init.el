@@ -347,10 +347,8 @@
   :ensure t
   :pin melpa-stable
   :defer t
-  :config
-  (require 'haskell-interactive-mode)
-  (require 'haskell-process)
-  (dolist (hook '(turn-on-haskell-doc-mode ; types on minibuffer
+  :init
+  (dolist (hook '(haskell-doc-mode      ; types on minibuffer
                   interactive-haskell-mode))
     (add-hook 'haskell-mode-hook hook)))
 
