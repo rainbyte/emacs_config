@@ -464,6 +464,13 @@
   (add-hook 'js2-mode-hook 'tern-mode))
 
 
+;; JSON support
+(use-package json-mode
+  :ensure t
+  :defer t
+  :mode "\\.json$")
+
+
 
 (provide 'init)
 ;;; init.el ends here
