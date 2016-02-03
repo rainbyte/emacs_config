@@ -127,6 +127,14 @@
   (global-set-key [f8] 'neotree-toggle))
 
 
+;; Consistent coding styles
+(use-package editorconfig
+  :ensure t
+  :pin melpa-stable
+  :config
+  (editorconfig-mode t))
+
+
 ;; On the fly syntax checking
 (use-package flycheck
   :ensure t
