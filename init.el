@@ -446,6 +446,24 @@
   :defer t)
 
 
+;; JavaScript support
+(use-package tern
+  :ensure t
+  :defer t
+  :commands tern-mode
+  :config
+  (use-package company-tern
+    :ensure t
+    :config
+    (add-to-list 'company-backends 'company-tern)))
+(use-package js2-mode
+  :ensure t
+  :defer t
+  :mode "\\.js$"
+  :init
+  (add-hook 'js2-mode-hook 'tern-mode))
+
+
 
 (provide 'init)
 ;;; init.el ends here
