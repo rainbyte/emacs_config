@@ -199,7 +199,8 @@
   (use-package company-anaconda
     :ensure t
     :config
-    (add-to-list 'company-backends 'company-anaconda)))
+    (add-to-list 'company-backends
+                 '(company-anaconda :with company-capf))))
 
 
 ;; Add header completion for C/C++/ObjC modes
