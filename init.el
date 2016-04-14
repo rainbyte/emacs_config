@@ -78,6 +78,7 @@
 ;; Automatic resizing
 (use-package golden-ratio
   :ensure t
+  :disabled t
   :config
   (golden-ratio-mode t)
   (golden-ratio-toggle-widescreen))
