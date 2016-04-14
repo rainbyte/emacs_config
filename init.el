@@ -87,6 +87,7 @@
 ;; Show line numbers
 (use-package nlinum
   :ensure t
+  :disabled t
   :config
   (global-nlinum-mode 1))
 
