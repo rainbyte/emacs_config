@@ -63,17 +63,16 @@
 ;(set-face-attribute 'default nil :height 140)
 
 
-;; Vim-like powerline
-(use-package smart-mode-line
+;; Spacemacs-like powerline
+(use-package spaceline
   :ensure t
+  :if window-system                     ; enable only in gui mode
+  :init
+  (setq-default powerline-default-separator 'wave)
   :config
-  (use-package smart-mode-line-powerline-theme
-    :ensure t
-    :if window-system                   ; enable only in gui mode
-    :config
-    (setq sml/theme 'powerline))
-  (setq rm-whitelist '(""))
-  (sml/setup))
+  (require 'spaceline-config)
+  (spaceline-emacs-theme)
+  (spaceline-toggle-minor-modes-off))
 
 
 ;; Automatic resizing
