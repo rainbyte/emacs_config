@@ -49,6 +49,10 @@
 (define-key global-map (kbd "C-,") 'iedit-mode) ; iedit, fix keymap bug
 
 
+;; Fix undefined dead-accent keys issue
+(require 'iso-transl)
+
+
 ;; Color themes
 (use-package monokai-theme ; ciberpunk-theme
   :ensure t
