@@ -155,6 +155,7 @@
   :init
   (setq company-tooltip-align-annotations t)
   (setq company-dabbrev-downcase nil) ; case sensitive text completions
+  (setq company-show-numbers t)       ; visual numbering of candidates
   :config
   (add-hook 'after-init-hook 'global-company-mode)
 
