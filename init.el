@@ -154,6 +154,7 @@
   :ensure t
   :init
   (setq company-tooltip-align-annotations t)
+  (setq company-dabbrev-downcase nil) ; case sensitive text completions
   :config
   (add-hook 'after-init-hook 'global-company-mode)
 
