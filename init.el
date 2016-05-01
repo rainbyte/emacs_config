@@ -49,6 +49,10 @@
 (define-key global-map (kbd "C-,") 'iedit-mode) ; iedit, fix keymap bug
 
 
+;; Default shell cmd, various packages assume bash
+(setq shell-file-name "bash")
+
+
 ;; Fix undefined dead-accent keys issue
 (require 'iso-transl)
 
