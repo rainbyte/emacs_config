@@ -483,6 +483,13 @@
   :mode "\\.json$")
 
 
+;; F#
+(use-package fsharp-mode
+  :ensure t
+  :pin melpa-stable
+  :defer t)
+
+
 
 (provide 'init)
 ;;; init.el ends here
