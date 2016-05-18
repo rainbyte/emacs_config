@@ -74,6 +74,7 @@
 ;; Spacemacs-like powerline
 (use-package spaceline
   :ensure t
+  :pin melpa-stable
   :if window-system                     ; enable only in gui mode
   :init
   (setq-default powerline-default-separator 'wave)
