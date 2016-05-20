@@ -211,7 +211,9 @@
     :ensure t
     :config
     (add-to-list 'company-backends
-                 '(company-anaconda :with company-capf))))
+                 '(company-anaconda :with company-capf)))
+  (use-package flycheck-mypy
+    :ensure t))
 
 
 ;; Add header completion for C/C++/ObjC modes
