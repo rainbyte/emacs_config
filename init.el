@@ -213,7 +213,10 @@
     (add-to-list 'company-backends
                  '(company-anaconda :with company-capf)))
   (use-package flycheck-mypy
-    :ensure t))
+    :ensure t
+    :config
+    (flycheck-add-next-checker 'python-pycompile 'python-mypy)
+    (flycheck-add-next-checker 'python-flake8 'python-mypy)))
 
 
 ;; Add header completion for C/C++/ObjC modes
