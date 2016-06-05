@@ -378,9 +378,7 @@
                   haskell-decl-scan-mode
                   interactive-haskell-mode
                   ghc-comp-init))
-    (add-hook 'haskell-mode-hook hook))
-  :config
-  (speedbar-add-supported-extension ".hs"))
+    (add-hook 'haskell-mode-hook hook)))
 (use-package ghc
   :ensure t
   :pin melpa-stable
