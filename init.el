@@ -374,7 +374,7 @@
   :pin melpa-stable
   :defer t
   :init
-  (dolist (hook '(haskell-doc-mode      ; types on minibuffer
+  (dolist (hook '(eldoc-mode            ; types on minibuffer
                   haskell-decl-scan-mode
                   interactive-haskell-mode
                   ghc-comp-init))
