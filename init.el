@@ -494,6 +494,13 @@
   :defer t)
 
 
+;; Yaml
+(use-package yaml-mode
+  :ensure t
+  :pin melpa-stable
+  :defer t)
+
+
 
 (provide 'init)
 ;;; init.el ends here
