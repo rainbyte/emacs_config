@@ -9,9 +9,9 @@
 (require 'package)
 (setq package-enable-at-startup nil)    ; disable package auto-load
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 
 ;; Select stable package versions (before package-init!)
