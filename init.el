@@ -15,13 +15,11 @@
 
 
 ;; Select stable package versions (before package-init!)
-(setq package-pinned-packages '((clojure-mode . "melpa-stable")
-                                (cider . "melpa-stable")
-                                (geiser . "melpa-stable")
-                                (slime . "melpa-stable")
-                                (slime-company . "melpa-stable")
-                                (lispy . "melpa")
-                                (csharp-mode . "melpa-stable")))
+(setq package-archive-priorities
+      '(("melpa-stable" . 100)
+        ("melpa" . 50)))
+(setq package-pinned-packages
+      '((lispy . "melpa")))
 
 
 ;; Package manager init
@@ -74,7 +72,6 @@
 ;; Spacemacs-like powerline
 (use-package spaceline
   :ensure t
-  :pin melpa-stable
   :if window-system                     ; enable only in gui mode
   :init
   (setq-default powerline-default-separator 'wave)
@@ -140,7 +137,6 @@
 ;; Consistent coding styles
 (use-package editorconfig
   :ensure t
-  :pin melpa-stable
   :config
   (editorconfig-mode t))
 
@@ -371,7 +367,6 @@
 ;; Haskell support
 (use-package haskell-mode
   :ensure t
-  :pin melpa-stable
   :defer t
   :init
   (dolist (hook '(eldoc-mode            ; types on minibuffer
@@ -381,12 +376,10 @@
     (add-hook 'haskell-mode-hook hook)))
 (use-package ghc
   :ensure t
-  :pin melpa-stable
   :commands ghc-comp-init ghc-init ghc-debug
   :config
   (use-package company-ghc
     :ensure t
-    :pin melpa-stable
     :config
     (add-to-list 'company-backends 'company-ghc)))
 
@@ -490,14 +483,12 @@
 ;; F#
 (use-package fsharp-mode
   :ensure t
-  :pin melpa-stable
   :defer t)
 
 
 ;; Yaml
 (use-package yaml-mode
   :ensure t
-  :pin melpa-stable
   :defer t)
 
 
