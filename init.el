@@ -492,6 +492,11 @@
   :defer t)
 
 
+;; Ledger
+(use-package ledger-mode
+  :ensure t
+  :defer t)
+
 
 (provide 'init)
 ;;; init.el ends here
