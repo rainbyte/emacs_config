@@ -130,8 +130,9 @@
 ;; Neotree, filesystem navigation
 (use-package neotree
   :ensure t
+  :bind ([f8] . neotree-toggle)
   :config
-  (global-set-key [f8] 'neotree-toggle))
+  (setq neo-autorefresh nil))
 
 
 ;; Consistent coding styles
