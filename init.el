@@ -86,12 +86,13 @@
 
 
 ;; Custom font size
-;(set-face-attribute 'default nil :height 140)
+;; (set-face-attribute 'default nil :height 140)
 
 
 ;; Spacemacs-like powerline
 (use-package spaceline
   :ensure t
+  :functions spaceline-emacs-theme spaceline-toggle-minor-modes-off
   :if window-system                     ; enable only in gui mode
   :init
   (setq-default powerline-default-separator 'wave)
@@ -145,8 +146,8 @@
 
 
 ;; Text-mode tabs indentation
-(defun my:text-mode-config()
-  ;; Tabs width workaround
+(defun my:text-mode-config ()
+  "Tabs width workaround."
   (setq indent-line-function 'insert-tab))
 (add-hook 'text-mode-hook 'my:text-mode-config)
 
@@ -178,6 +179,7 @@
 ;; Start company-mode
 (use-package company
   :ensure t
+  :defines company-dabbrev-downcase
   :init
   (setq company-tooltip-align-annotations t)
   (setq company-dabbrev-downcase nil) ; case sensitive text completions
@@ -187,7 +189,7 @@
 
   ;; Make tab indentation and completion work properly
   (define-key company-mode-map [remap indent-for-tab-command]
-    'company-indent-for-tab-command)
+              'company-indent-for-tab-command)
   (setq tab-always-indent 'complete) ; indent first, and then complete
   (defun company-indent-for-tab-command (&optional arg)
     (interactive "P")
@@ -195,7 +197,8 @@
            (completion-at-point-functions
             (lambda ()
               (let ((completion-at-point-functions functions-saved))
-                (company-complete-common)))))
+                (when (fboundp 'company-complete-common)
+                  (company-complete-common))))))
       (indent-for-tab-command arg)))
 
   (use-package company-quickhelp
@@ -251,6 +254,7 @@
 
 ;; Remove whitespace before saving
 (defun my:remove-whitespace-config ()
+  "Remove whitespace before saving."
   (unless (derived-mode-p 'markdown-mode)
     (delete-trailing-whitespace)))
 (add-hook 'before-save-hook 'my:remove-whitespace-config)
@@ -277,8 +281,9 @@
   (use-package flycheck-mypy
     :ensure t
     :config
-    (flycheck-add-next-checker 'python-pycompile 'python-mypy)
-    (flycheck-add-next-checker 'python-flake8 'python-mypy)))
+    (when (fboundp 'flycheck-add-next-checker)
+      (flycheck-add-next-checker 'python-pycompile 'python-mypy)
+      (flycheck-add-next-checker 'python-flake8 'python-mypy))))
 
 
 ;; Add header completion for C/C++/ObjC modes
@@ -344,7 +349,7 @@
   (use-package robe :ensure t)
   (use-package yard-mode :ensure t)
   (defun my-ruby-mode-config ()
-    (rainbow-identifiers-mode 0) ; fixes wrong colors
+    (rainbow-identifiers-mode 0)      ; fixes wrong colors
     (robe-mode 1)
     (push 'company-robe company-backends)
     (yard-mode 1))
@@ -363,6 +368,7 @@
 (use-package geiser
   :ensure t
   :defer t
+  :defines geiser-mode-start-repl-p
   :init
   (defun my-geiser-mode-hook ()
     (setq geiser-mode-start-repl-p t) ; auto-start repl
