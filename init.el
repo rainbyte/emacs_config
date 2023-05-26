@@ -1,3 +1,10 @@
+;;; init.el --- Initialization file for Emacs
+
+;;; Commentary:
+;; Emacs Startup File --- initialization for Emacs
+
+;;; Code:
+
 ;; Independent custom-set-* config
 (setq custom-file "~/.emacs.d/custom.el")
 (unless (file-exists-p custom-file)
