@@ -47,6 +47,10 @@
 (define-key global-map (kbd "C-,") 'iedit-mode) ; iedit, fix keymap bug
 
 
+;; Enable standard copy & paste
+(cua-mode t)
+
+
 ;; Default shell cmd, various packages assume bash
 (setq shell-file-name "bash")
 
