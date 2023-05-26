@@ -102,6 +102,10 @@
   (global-nlinum-mode 1))
 
 
+;; UI: hide desktop window decorations
+(modify-all-frames-parameters '((undecorated t)))
+
+
 ;; Custom UI options
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
