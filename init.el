@@ -200,6 +200,47 @@
   (add-hook 'prog-mode-hook 'column-enforce-mode))
 
 
+;; Color parenthesis
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode))
+
+
+;; Color each identifier
+(use-package rainbow-identifiers
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
+
+
+;; Smart parenthesis config
+(use-package smartparens
+  :ensure t
+  :defer t
+  :init
+  (defun my-smartparens-config ()
+    (require 'smartparens-config)
+    (smartparens-global-mode t)       ;; smart completion
+    (show-smartparens-global-mode t)) ;; highlights matching pairs
+  (add-hook 'prog-mode-hook 'my-smartparens-config))
+
+
+;; Remove whitespace before saving
+(defun my:remove-whitespace-config ()
+  (unless (derived-mode-p 'markdown-mode)
+    (delete-trailing-whitespace)))
+(add-hook 'before-save-hook 'my:remove-whitespace-config)
+
+
+;; ---------------------------------------------------------
+;; ------------------ Languages & formats ------------------
+;; ---------------------------------------------------------
+
+
 ;; Python support
 (use-package anaconda-mode
   :ensure t
@@ -273,42 +314,6 @@
     (setq cider-repl-history-size 1000))
   (add-hook 'cider-repl-mode-hook 'my-cider-repl-mode-config)
   (add-hook 'cider-repl-mode-hook 'subword-mode))
-
-
-;; Color parenthesis
-(use-package rainbow-delimiters
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-  (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode))
-
-
-;; Color each identifier
-(use-package rainbow-identifiers
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
-
-
-;; Smart parenthesis config
-(use-package smartparens
-  :ensure t
-  :defer t
-  :init
-  (defun my-smartparens-config ()
-    (require 'smartparens-config)
-    (smartparens-global-mode t)       ;; smart completion
-    (show-smartparens-global-mode t)) ;; highlights matching pairs
-  (add-hook 'prog-mode-hook 'my-smartparens-config))
-
-
-;; Remove whitespace before saving
-(defun my:remove-whitespace-config ()
-  (unless (derived-mode-p 'markdown-mode)
-    (delete-trailing-whitespace)))
-(add-hook 'before-save-hook 'my:remove-whitespace-config)
 
 
 ;; Enhanced ruby mode config
