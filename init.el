@@ -70,6 +70,13 @@
 (set-background-color "#000000")
 
 
+;; UI: menu colors on console TUI
+(set-face-attribute 'menu nil
+                    :inverse-video nil
+                    :background "green"
+                    :foreground "magenta"
+                    :bold t)
+
 
 ;; Custom font size
 ;(set-face-attribute 'default nil :height 140)
