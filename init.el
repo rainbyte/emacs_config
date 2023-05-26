@@ -65,8 +65,10 @@
   :init (load-theme 'monokai t))
 
 
-;; Custom colors
-;(set-background-color "#1C1C1C")
+
+;; UI: custom colors
+(set-background-color "#000000")
+
 
 
 ;; Custom font size
