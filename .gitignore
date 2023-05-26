@@ -11,6 +11,10 @@ auto-save-list
 tramp
 .\#*
 
+# cache
+/.cache/
+/eln-cache/
+
 # custom-set-* config
 custom.el
 
