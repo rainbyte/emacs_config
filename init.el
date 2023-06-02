@@ -112,11 +112,9 @@
 
 
 ;; Show line numbers
-(use-package nlinum
-  :ensure t
-  :disabled t
-  :config
-  (global-nlinum-mode 1))
+(when (version<= "26.0.50" emacs-version)
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  (add-hook 'text-mode-hook 'display-line-numbers-mode))
 
 
 ;; UI: hide desktop window decorations
