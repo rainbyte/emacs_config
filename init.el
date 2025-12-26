@@ -67,10 +67,10 @@
 
 
 ;; Color themes
-(use-package monokai-theme ; ciberpunk-theme
-  :ensure t
-  :init (load-theme 'monokai t))
-
+;; (load-theme 'manoj-dark t)
+;; (load-theme 'modus-vivendi t)
+(load-theme 'modus-vivendi-tritanopia t)
+;; (load-theme 'wheatgrass t)
 
 
 ;; UI: custom colors
