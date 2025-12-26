@@ -520,6 +520,12 @@
   :defer t)
 
 
+;; Golang
+(use-package go-mode
+  :ensure t
+  :defer t)
+
+
 ;; Yaml
 (use-package yaml-mode
   :ensure t
