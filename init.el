@@ -85,6 +85,15 @@
                     :bold t)
 
 
+;; UI: transparent bg on console TUI
+(add-hook 'window-setup-hook
+          (lambda ()
+            (unless (display-graphic-p (selected-frame))
+              (set-face-background 'default
+                                   "unspecified-bg"
+                                   (selected-frame)))))
+
+
 ;; Custom font size
 ;; (set-face-attribute 'default nil :height 140)
 
