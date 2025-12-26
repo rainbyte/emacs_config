@@ -469,19 +469,8 @@
 ;; rust support
 (use-package rust-mode
   :ensure t
-  :defer t
-  :config
-  (use-package flycheck-rust
-    :ensure t
-    :config (flycheck-rust-setup))
-  (use-package racer
-    :ensure t
-    :init
-    (unless (getenv "RUST_SRC_PATH")
-      (setenv "RUST_SRC_PATH"
-              (expand-file-name "/usr/src/rust/src")))
-    (add-hook 'rust-mode-hook 'racer-mode)
-    (add-hook 'racer-mode-hook 'eldoc-mode)))
+  :defer t)
+
 
 ;; C# support
 (use-package csharp-mode
